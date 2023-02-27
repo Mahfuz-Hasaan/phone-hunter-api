@@ -8,6 +8,14 @@ const loadPhones = async (searchText) => {
 showPhones = (phones) => {
   const phoneParentContainer = document.getElementById("phone-card-container");
   phoneParentContainer.innerText = '';
+  phones = phones.slice(0,20);
+  const noPhone = document.getElementById('hidden-msg');
+  if(phones.length ===  0){
+    noPhone.classList.remove('hidden');
+  }
+  else{
+    noPhone.classList.add('hidden');
+  }
   phones.forEach((phone) => {
     // console.log(phone);
     const phoneChildContainer = document.createElement("div");
