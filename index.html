@@ -19,7 +19,11 @@
 
   <body class="bg-yellow-100">
     <header><h1 class="text-center font-bold text-4xl py-10">My Phone Hunter</h1>
-    <section class="search w-80 mx-auto pb-10"><input type="text" placeholder="Search here " class="input input-bordered input-primary w-full max-w-xs " /></section>
+    <section class="search flex md:flex-row px-3 gap-x-3 md:gap-x-5 justify-center">
+        <div class=" w-80  pb-10"><input type="text" placeholder="Search here " class="input input-bordered input-primary w-full max-w-xs" id="search-field"/>
+        </div>
+        <div><button class="btn btn-primary" id="search-btn">Button</button></div>
+    </section>
     </header>
 
     <main>
