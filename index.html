@@ -17,11 +17,13 @@
     />
   </head>
 
-  <body>
-    <header><h1>My phone hunter</h1></header>
+  <body class="bg-yellow-100">
+    <header><h1 class="text-center font-bold text-4xl py-10">My Phone Hunter</h1>
+    <section class="search w-80 mx-auto pb-10"><input type="text" placeholder="Search here " class="input input-bordered input-primary w-full max-w-xs " /></section>
+    </header>
 
     <main>
-        <section class="phone-card grid grid-cols-4 bg-blue-200 justify-items-center align-items-center gap-y-10 w-11/12 mx-auto py-10" id="phone-card-container">
+        <section class="phone-card grid md:grid-cols-2  lg:grid-cols-4  bg-blue-200 justify-items-center align-items-center md:gap-x-5 gap-y-8 lg:w-11/12 md:w-10/12 mx-auto py-10 px-5 rounded-lg" id="phone-card-container">
             
         </section>
     </main>
