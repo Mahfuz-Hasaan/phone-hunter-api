@@ -33,17 +33,28 @@ showPhones = (phones) => {
         </div>
       </div>
         `;
-        phoneParentContainer.appendChild(phoneChildContainer);
+        phoneParentContainer.appendChild(phoneChildContainer);  
   });
+  toggoLoader(false)
 };
 
 document.getElementById('search-btn').addEventListener('click',function(){
+    toggoLoader(true);
     const searchFieldValue = document.getElementById('search-field').value;
     loadPhones(searchFieldValue);
     document.getElementById('search-field').value = '';
 
 })
 
+const toggoLoader = (isLoading) =>{
+  const loader = document.getElementById('loader');
+  if(isLoading === true){
+    loader.classList.remove('hidden');
+  }
+  else if(isLoading === false){
+    loader.classList.add('hidden');
+  }
+}
 loadPhones();
 
 
