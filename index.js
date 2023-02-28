@@ -1,16 +1,25 @@
-const loadPhones = async (searchText) => {
+const loadPhones = async (searchText,datalimit) => {
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   const res = await fetch(url);
   const data = await res.json();
-  showPhones(data.data);
+  showPhones(data.data,datalimit);
 };
 
-showPhones = (phones) => {
+showPhones = (phones,datalimit) => {
   const phoneParentContainer = document.getElementById("phone-card-container");
   phoneParentContainer.innerText = '';
-  phones = phones.slice(0,20);
+  const showMore = document.getElementById('show-more');
+  if(datalimit && phones.length >= 10){
+    phones = phones.slice(0,10);
+    showMore.classList.remove('hidden');
+  }
+  else{
+    showMore.classList.add('hidden');
+  }
+   
+  
   const noPhone = document.getElementById('hidden-msg');
-  if(phones.length ===  0){
+  if(phones.length === 0){
     noPhone.classList.remove('hidden');
   }
   else{
@@ -38,11 +47,15 @@ showPhones = (phones) => {
   toggoLoader(false)
 };
 
+const processSearch = (datalimit) =>{
+  toggoLoader(true);
+  const searchFieldValue = document.getElementById('search-field').value;
+  loadPhones(searchFieldValue,datalimit);
+  
+}
+
 document.getElementById('search-btn').addEventListener('click',function(){
-    toggoLoader(true);
-    const searchFieldValue = document.getElementById('search-field').value;
-    loadPhones(searchFieldValue);
-    document.getElementById('search-field').value = '';
+   processSearch(10)
 
 })
 
@@ -55,6 +68,10 @@ const toggoLoader = (isLoading) =>{
     loader.classList.add('hidden');
   }
 }
+
+document.getElementById('show-btn').addEventListener('click',function(){
+  processSearch();
+})
 loadPhones();
 
 
